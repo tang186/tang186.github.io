@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Document</title>
+    <script defer="defer" src="./dist/bundle.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2><a href="https://gitee.com/echo186/mini-mvvm" target="_blank">mini-mvvm</a> <span>- 功能演示</span></h2>
+        <div class="list-tab">
+            <div m-for="(item, index) in tabList"><span m-bind:class="{{index}} == activeIndex? 'active tab': 'tab'"
+                    @click="active({{index}})">{{ item }}</span></div>
+        </div>
+        <div class="tab-page">
+            <div m-if="activeIndex === 0" class="page-item">
+                <h4>双向绑定（m-model）：</h4>
+                <ul class="list">
+                    <li class="list-item"><span class="label">姓名：</span> <input m-model="person.name" /></li>
+                    <li class="list-item"><span class="label">年龄：</span> <input m-model="person.age" type="number" />
+                    </li>
+                    <li class="list-item"><span class="label">性别：</span> <select m-model="person.sex">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select></li>
+                    <li class="list-item">
+                        <p>姓名：{{ person.name }}，年龄：{{ person.age }}，性别：{{ person.sex }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div m-if="activeIndex===1" class="page-item">
+                <h4>计算属性（computed）：</h4>
+                <ul class="list">
+                    <li class="list-item">
+                        <p>{{ computedDescription }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div m-if="activeIndex===2" class="page-item">
+                <h4>条件渲染（m-if）</h4>
+                <ul class="list">
+                    <li class="list-item"><label><span @click="showTextChange">点我 &gt;_&lt;#@! 显示下文：</span></label></li>
+                    <li m-if="showText" class="list-item">噼里啪啦噼里啪啦噼里啪啦噼里啪啦噼里啪啦</li>
+                </ul>
+            </div>
+            <div m-if="activeIndex===3" class="page-item">
+                <h4>循环（m-for）,乘法表，（尝试点击）：</h4>
+                <div class="for-table">
+                    <div m-for="item in forTable"><span @click="initForTable(item)">{{item}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

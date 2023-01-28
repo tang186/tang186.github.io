@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "es6",
+    "strict": true,
+    "noEmitOnError": true,
+    "noImplicitAny": false, // 在表达式和声明上有隐含的'any'类型时报错。
+  },
+}
